@@ -18,7 +18,10 @@ namespace EntityLayer.Concrete
         public decimal Salary { get; set; }
         public DateTime PostedDate { get; set; }
         public DateTime ExpirationDate { get; set; }
+        public int JobStatus { get; set; }
         public int EmployerID { get; set; }
         public int CategoryID { get; set; }
+        public Employer Employer { get; set; }
+        public JobCategory JobCategory { get; set; }
     }
 }

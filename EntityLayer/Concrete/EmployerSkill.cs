@@ -13,5 +13,7 @@ namespace EntityLayer.Concrete
         public int EmployerSkillID { get; set; }
         public int EmployerID { get; set; }
         public int SkillID { get; set; }
+        public Skill Skill { get; set; }
+        public Employer Employer { get; set; }
     }
 }

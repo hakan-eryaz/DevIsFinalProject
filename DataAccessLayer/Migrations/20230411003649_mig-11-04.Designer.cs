@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230411000844_mig-11-04")]
+    [Migration("20230411003649_mig-11-04")]
     partial class mig1104
     {
         /// <inheritdoc />
@@ -43,6 +43,10 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ApplicationID");
+
+                    b.HasIndex("JobID");
+
+                    b.HasIndex("JobSeekerID");
 
                     b.ToTable("Applications");
                 });
@@ -91,6 +95,9 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("EmployerStatus")
+                        .HasColumnType("int");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -124,7 +131,11 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("EmployerSkillID");
 
-                    b.ToTable("EmployersSkillS");
+                    b.HasIndex("EmployerID");
+
+                    b.HasIndex("SkillID");
+
+                    b.ToTable("EmployerSkills");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Job", b =>
@@ -148,6 +159,12 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime>("ExpirationDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("JobCategoryCategoryID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobStatus")
+                        .HasColumnType("int");
+
                     b.Property<string>("JobTitle")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -167,6 +184,10 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("JobID");
+
+                    b.HasIndex("EmployerID");
+
+                    b.HasIndex("JobCategoryCategoryID");
 
                     b.ToTable("Jobs");
                 });
@@ -216,6 +237,9 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("JobSeekerStatus")
+                        .HasColumnType("int");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -253,7 +277,11 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("JobSeekerSkillID");
 
-                    b.ToTable("JobSeekersSkills");
+                    b.HasIndex("JobSeekerID");
+
+                    b.HasIndex("SkillID");
+
+                    b.ToTable("JobSeekerSkills");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Resume", b =>
@@ -276,6 +304,8 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ResumeID");
+
+                    b.HasIndex("JobSeekerID");
 
                     b.ToTable("Resumes");
                 });
@@ -358,6 +388,93 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Application", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Job", "Job")
+                        .WithMany()
+                        .HasForeignKey("JobID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.JobSeeker", "JobSeeker")
+                        .WithMany()
+                        .HasForeignKey("JobSeekerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Job");
+
+                    b.Navigation("JobSeeker");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.EmployerSkill", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Employer", "Employer")
+                        .WithMany()
+                        .HasForeignKey("EmployerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.Skill", "Skill")
+                        .WithMany()
+                        .HasForeignKey("SkillID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employer");
+
+                    b.Navigation("Skill");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Job", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Employer", "Employer")
+                        .WithMany()
+                        .HasForeignKey("EmployerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.JobCategory", "JobCategory")
+                        .WithMany()
+                        .HasForeignKey("JobCategoryCategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employer");
+
+                    b.Navigation("JobCategory");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.JobSeekerSkill", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.JobSeeker", "JobSeeker")
+                        .WithMany()
+                        .HasForeignKey("JobSeekerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.Skill", "Skill")
+                        .WithMany()
+                        .HasForeignKey("SkillID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("JobSeeker");
+
+                    b.Navigation("Skill");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Resume", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.JobSeeker", "JobSeeker")
+                        .WithMany()
+                        .HasForeignKey("JobSeekerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("JobSeeker");
                 });
 #pragma warning restore 612, 618
         }

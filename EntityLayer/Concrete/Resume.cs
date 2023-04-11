@@ -14,5 +14,6 @@ namespace EntityLayer.Concrete
         public int JobSeekerID { get; set; }
         public string ResumeTitle { get; set; }
         public byte[] ResumeFile { get; set; }
+        public JobSeeker JobSeeker { get; set; }
     }
 }

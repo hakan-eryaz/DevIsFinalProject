@@ -14,5 +14,7 @@ namespace EntityLayer.Concrete
         public int JobID { get; set; }
         public int JobSeekerID { get; set; }
         public DateTime ApplicationDate { get; set; }
+        public Job Job { get; set; }
+        public JobSeeker JobSeeker { get; set; }
     }
 }

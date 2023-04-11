@@ -18,11 +18,11 @@ namespace DataAccessLayer.Concrete
         }
         public DbSet<Application> Applications { get; set; }
         public DbSet<Employer> Employers { get; set; }
-        public DbSet<EmployerSkill> EmployersSkillS { get; set; }
+        public DbSet<EmployerSkill> EmployerSkills { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
         public DbSet<JobSeeker> JobSeekers { get; set; }
-        public DbSet<JobSeekerSkill> JobSeekersSkills { get; set;}
+        public DbSet<JobSeekerSkill> JobSeekerSkills { get; set;}
         public DbSet<Resume> Resumes { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<User> Users { get; set; }
