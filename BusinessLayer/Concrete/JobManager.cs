@@ -13,35 +13,51 @@ namespace BusinessLayer.Concrete
 {
     public class JobManager:IJobService
     {
-        private IJobDal _jobDal;
+        IJobDal _jobDal;
 
         public JobManager( IJobDal jobDal)
         {
             _jobDal=jobDal;
         }
-        public void JobAdd(Job job)
-        {
-            _jobDal.Add(job);
-        }
-
-        public void JobDelete(Job job)
-        {
-            _jobDal.Remove(job);
-        }
-
-        public List<Job> GetJobs()
-        {
-            return _jobDal.GetAll();
-        }
-
-        public Job GetJobById(int id)
-        {
-            return _jobDal.Get(id);
-        }
 
         public Job GetJobByName(string name)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Job> GetJobWithCategory()
+        {
+            return _jobDal.GetListWithCategory();
+        }
+
+        public void TAdd(Job entity)
+        {
+            _jobDal.Add(entity);
+        }
+
+        public void TRemove(Job entity)
+        {
+            _jobDal.Remove(entity);
+        }
+
+        public void TUpdate(Job entity)
+        {
+            _jobDal.Update(entity);
+        }
+
+        public List<Job> GetAll()
+        {
+            return _jobDal.GetAll();
+        }
+
+        public Job GetById(int id)
+        {
+            return _jobDal.Get(id);
+        }
+
+        public List<Job> GetJobByID(int id)
+        {
+            return _jobDal.List(x => x.JobID == id);
         }
     }
 }

@@ -7,13 +7,11 @@ using EntityLayer.Concrete;
 
 namespace BusinessLayer.Abstract
 {
-    public interface IJobService
+    public interface IJobService:IGenericService<Job>
     {
-        void JobAdd(Job job);
-        void JobDelete(Job job);
-        List<Job> GetJobs();
-        Job GetJobById(int id);
         Job GetJobByName(string name);
+        List<Job> GetJobWithCategory();
+        List<Job> GetJobByID(int id);
 
     }
 }

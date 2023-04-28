@@ -9,8 +9,14 @@ namespace DevIsFinalProject.Controllers
         JobManager jobManager=new JobManager(new EFJobRepository());
         public IActionResult Index()
         {
-            var values = jobManager.GetJobs();
+            var values = jobManager.GetJobWithCategory();
             return View(values);
+        }
+
+        public IActionResult JobDetails(int id)
+        {
+            var value = jobManager.GetJobByID(id);
+            return View(value);
         }
     }
 }
