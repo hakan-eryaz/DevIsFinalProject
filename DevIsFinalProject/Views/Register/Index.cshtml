@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="container-box Forms">
+
+    <!-- Signup Form -->
+
+    <div class="joinus-form signup">
+        <div class="form-content">
+            <header>Join Us and find your job</header>
+            <form action="@Url.Action("Index", "Register")" method="post">
+                <div class="fieldjoin input-field">
+                    <input type="name" placeholder="First Name" class="input" required>
+                </div>
+                <div class="fieldjoin input-field">
+                    <input type="name" placeholder="Last Name" class="input" required>
+                </div>
+                <div class=" fieldjoin input-field">
+                    <input type="email" placeholder="Email Address" class="input" required>
+                </div>
+                <div class=" fieldjoin input-field">
+                    <input type="number" placeholder="Phone Number" class="input" required>
+                </div>
+
+                <div class=" fieldjoin input-field">
+                    <input type="password" placeholder="Create password" class="password" required>
+                </div>
+
+
+
+                <div class=" fieldjoin button-field">
+                    <button type="submit">Signup</button>
+                </div>
+            </form>
+
+            <div class="form-link">
+                <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
+            </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="media-options">
+            <a href="#" class=" fieldjoin facebook">
+                <i class='bx bxl-facebook facebook-icon'></i>
+                <span>Login with Facebook</span>
+            </a>
+        </div>
+
+        <div class="media-options">
+            <a href="#" class=" fieldjoin google">
+                <img src="#" alt="" class="google-img">
+                <span>Login with Google</span>
+            </a>
+        </div>
+
+    </div>
+</section>

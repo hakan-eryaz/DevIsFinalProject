@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "JoinUs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Join Us and Look for a job </h2>
+<div>
+    <form>
+        <div class="text-field">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number : </label>
+        <input type="number" id="phone" name="phonenumber" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+        <p class="forget-password">Forget Password?</p>
+        <p>Already have an account ? <a src="#">Sign In</a> </p>
+
+        <div class="">
+            <p>Join us using</p>
+            <button action="#"> Google </button>
+            <button action="#"> Google </button>
+        </div>
+        <button type="submit">Join Now</button>
+    </form>
+</div>
+    
+
+
+

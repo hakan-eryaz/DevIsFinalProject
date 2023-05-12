@@ -26,4 +26,8 @@
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\CssOfTasneem\" />
+  </ItemGroup>
+
 </Project>

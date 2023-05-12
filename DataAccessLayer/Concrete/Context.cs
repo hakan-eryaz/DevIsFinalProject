@@ -14,7 +14,7 @@ namespace DataAccessLayer.Concrete
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=DevIsFinalProjectDB;integrated security=true;");
+            optionsBuilder.UseSqlServer("Server=TasneemAlamer\\SQLEXPRESS;Database=DevIsFinalProjectDB;Trusted_Connection=True;Encrypt=False;integrated security=true;");
         }
         public DbSet<Application> Applications { get; set; }
         public DbSet<Employer> Employers { get; set; }
