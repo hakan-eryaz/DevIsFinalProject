@@ -1,7 +1,7 @@
-﻿@using EntityLayer.Concrete
-@model List<JobCategory>
+﻿
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
 <!doctype html>
@@ -20,7 +20,7 @@
         </div>
     </div>
     <!-- Preloader Start -->
-    
+
     <main>
 
         <!-- slider Area Start-->
@@ -32,116 +32,30 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-9 col-md-10">
                                 <div class="hero__caption">
-                                    <h1>Sizin için en uygun işi bulun</h1>
+                                    <h1>Sizin için en uygun işçiyi bulun ve sonrasını yönetin.</h1>
                                 </div>
                             </div>
                         </div>
                         <!-- Search Box -->
-                        <div class="row">
-                            <div class="col-xl-8">
-                                <!-- form -->
-                                <form action="#" class="search-box">
-                                    <div class="input-form">
-                                        <input type="text" placeholder="İlan başlığı ile arayın.">
-                                    </div>
-                                    <div class="select-form">
-                                        <div class="select-itms">
-                                            <select name="select" id="select1">
-                                                <option value="">İstanbul</option>
-                                                <option value="">Ankara</option>
-                                                <option value="">İzmir</option>
-                                                <option value="">Bursa</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="search-form">
-                                        <a href="#">İş Bul</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- slider Area End-->
         <!-- Our Services Start -->
-        <div class="our-services section-pad-t30">
-            <div class="container">
-                <!-- Section Tittle -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-tittle text-center">
-                            <h2>Kategoriler</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row d-flex justify-contnet-center">
-                @foreach (var item in Model)
-                {
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-tour"></span>
-                            </div>
-                            <div class="services-cap">
-                                    <h5><a href="~/template2/job_listing.html">@item.CategoryName</a></h5>
-                                <span>(653)</span>
-                            </div>
-                        </div>
-                    </div>
-                }
-                </div>
-                <!-- More Btn -->
-                <!-- Section Button -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="browse-btn2 text-center mt-50">
-                            <a href="job_listing.html" class="border-btn2">Browse All Sectors</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Our Services End -->
+        
         <!-- Online CV Area Start -->
-    <div class="online-cv cv-bg section-overly pt-90 pb-120" data-background="~/template2/assets/img/gallery/cv_bg.jpg">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-10">
-                    <div class="cv-caption text-center">
-                            
-                        <p class="pera2">Özgeçmişin İle Fark Yarat!</p>
-                        <a href="#" class="border-btn2 border-btn4">Özgeçmiş Yükle</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Featured_job_start -->
-    <section class="featured-job-area feature-padding">
-    <div class="container">
-    <!-- Section Tittle -->
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="section-tittle text-center">
-                <span>Yeni İşler</span>
-                <h2>Öne Çıkanlar</h2>
-            </div>
-        </div>
-    </div>
-        <!-- Online CV Area End-->
-    @await Component.InvokeAsync("JobList")
-    </div>
-    </section>
-    <!-- How  Apply Process Start-->
+       
+        <!-- Featured_job_start -->
+        
+        <!-- How  Apply Process Start-->
         <div class="apply-process-area apply-bg pt-150 pb-150" data-background="~/template2/assets/img/gallery/how-applybg.png">
             <div class="container">
                 <!-- Section Tittle -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-tittle white-text text-center">
-                            <span>Başvuru Süreci</span>
+                            <span>İşe Alım ve Sonrası</span>
                             <h2> Nasıl İşler</h2>
                         </div>
                     </div>
@@ -154,8 +68,8 @@
                                 <span class="flaticon-search"></span>
                             </div>
                             <div class="process-cap">
-                                <h5>1. Sana Uygun İşi Bul</h5>
-                                <p>İşverenler tarafından yayınlanmış sana en uygun işi bul.</p>
+                                <h5>1. Sana Uygun Personeli Bul</h5>
+                                <p>Yayınladığınız işlere başvuran personelleri seçin.</p>
                             </div>
                         </div>
                     </div>
@@ -165,8 +79,8 @@
                                 <span class="flaticon-curriculum-vitae"></span>
                             </div>
                             <div class="process-cap">
-                                <h5>2. İşe Başvur</h5>
-                                <p>Sana en uygun işi bulduktan sonra işe kolayca başvur.</p>
+                                <h5>2. Personel İşe Alım Süreci</h5>
+                                <p>Uygun personelleri seçtikten sonra işe alımda ihtiyacın olan belgeleri sistem üzerinden topla.</p>
                             </div>
                         </div>
                     </div>
@@ -176,8 +90,8 @@
                                 <span class="flaticon-tour"></span>
                             </div>
                             <div class="process-cap">
-                                <h5>3. İş Sahibi Ol</h5>
-                                <p>Ve işin hazır. Tüm süreçleri sitemiz üzerinden ilerletebilirsin.</p>
+                                <h5>3. Personeli Yönet</h5>
+                                <p>Ve personeli işe aldın. Bundan sonraki süreçte personel yönetimine buradan devam et. </p>
                             </div>
                         </div>
                     </div>
@@ -337,7 +251,7 @@
         <!-- Blog Area End -->
 
     </main>
-    
+
 
 </body>
 </html>

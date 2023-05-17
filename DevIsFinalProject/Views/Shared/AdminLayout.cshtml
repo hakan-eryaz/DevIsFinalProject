@@ -42,25 +42,36 @@
                                 <div class="main-menu">
                                     <nav class="d-none d-lg-block">
                                         <ul id="navigation">
-                                            <li><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
-                                            <li><a asp-controller="Job" asp-action="JobList">İş İlanları </a></li>
-                                            <li><a asp-controller="Admin" asp-action="Index">Şirketler İçin</a></li>
-                                            <li><a asp-controller="Home" asp-action="Contact">İletişim</a></li>
+                                            <li><a href="../Home/Index">Ana Sayfa</a></li>
                                             <li>
-                                                <a href="#">Diğer</a>
+                                                <a href="#">İlan İşlemleri</a>
                                                 <ul class="submenu">
-                                                    <li><a href="blog.html">Hakkımızda</a></li>
-                                                    <li><a href="single-blog.html">Blog</a></li>
+                                                    <li><a href="../Admin/PostJob">İlan Ver </a></li>
+                                                    <li><a href="../Job/Index">İlanlarımı listele</a></li>
                                                 </ul>
                                             </li>
-                                            
+                                            <li>
+                                                <a href="#">Özellikler</a>
+                                                <ul class="submenu">
+                                                    <li><a href="blog.html">Maaş Hesapla</a></li>
+                                                    <li><a href="../Quiz/Index">Sınavlar</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Personel Yönetimi</a>
+                                                <ul class="submenu">
+                                                    <li><a href="blog.html">Mevcut Personel</a></li>
+                                                    <li><a href="single-blog.html">Aday Personel</a></li>
+                                                </ul>
+                                            </li>
+
                                         </ul>
                                     </nav>
                                 </div>
                                 <!-- Header-btn -->
                                 <div class="header-btn d-none f-right d-lg-block">
-                                    <a asp-controller="Account" asp-action="Register"  class="btn head-btn1">Üye Ol</a>
-                                    <a asp-controller="Account" asp-action="Login"  class="btn head-btn2">Giriş Yap</a>
+                                    <a href="../Register/Index" class="btn head-btn1">Profilim</a>
+                                    <a href="../Login/Index" class="btn head-btn2">Çıkış Yap</a>
                                 </div>
                             </div>
                         </div>
@@ -216,7 +227,7 @@
         </div>
         <!-- Footer End-->
     </footer>
-   
+
     <!-- JS here -->
     <!-- All JS Custom Plugins Link Here here -->
     <script src="~/template2/assets/js/vendor/modernizr-3.5.0.min.js"></script>
