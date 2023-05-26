@@ -5,11 +5,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer.Abstract;
 
 namespace BusinessLayer.Concrete
 {
     public class UserManager : IUserService
     {
+        private IUserDal _userDal;
+
+        public UserManager(IUserDal userDal)
+        {
+            _userDal=userDal;
+        }
         public List<User> GetAll()
         {
             throw new NotImplementedException();
@@ -22,17 +29,17 @@ namespace BusinessLayer.Concrete
 
         public void TAdd(User entity)
         {
-            throw new NotImplementedException();
+            _userDal.Add(entity);
         }
 
         public void TRemove(User entity)
         {
-            throw new NotImplementedException();
+            _userDal.Remove(entity);
         }
 
         public void TUpdate(User entity)
         {
-            throw new NotImplementedException();
+            _userDal.Update(entity);
         }
     }
 }

@@ -7,7 +7,7 @@ using EntityLayer.Concrete;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IResumeDal:IGenericDal<Resume>
+    public interface IContactDal: IGenericDal<Contact>
     {
     }
 }
