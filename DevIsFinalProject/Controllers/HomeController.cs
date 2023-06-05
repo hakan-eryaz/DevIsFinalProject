@@ -3,6 +3,7 @@ using DataAccessLayer.EntityFramework;
 using DevIsFinalProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using EntityLayer.Concrete;
 
 namespace DevIsFinalProject.Controllers
 {
@@ -10,6 +11,7 @@ namespace DevIsFinalProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         JobCategoryManager jobCategoryManager = new JobCategoryManager(new EFJobCategoryRepository());
+        private ContactManager contactManager = new ContactManager(new EfContactRepository());
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -21,16 +23,18 @@ namespace DevIsFinalProject.Controllers
             var values = jobCategoryManager.GetAll();
             return View(values);
         }
-
-        public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult Contact()
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        public IActionResult Contact(Contact contact)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            contact.Email = "hakan@gmail.com";
+            contactManager.TAdd(contact);
+            return View();
         }
+
     }
 }

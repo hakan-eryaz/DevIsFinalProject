@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewData["Title"] = "PostJob";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/assets/job_post_page.css">
+</head>
+<body>
+    <div class="container">
+        <h3>İlan vermek için lütfen aşağıdaki bilgileri doldurunuz.</h3>
+        <form id="jobForm">
+            <label for="jobTitle">İlan Başlığı</label>
+            <input type="text" id="jobTitle" required>
+
+            <label for="location">Konum</label>
+            <input type="text" id="location" required>
+
+            <label for="duration">Sözleşme Süresi</label>
+            <input type="text" id="duration" required>
+
+            <label for="salary">Maaş</label>
+            <input type="text" id="salary" required>
+
+
+            <label for="jobDescription">İş Tanımı</label>
+            <textarea id="jobDescription" rows="4" required></textarea>
+
+            <label for="technicalSkills">Teknik Özellikler</label>
+            <textarea id="technicalSkills" rows="4" required></textarea>
+
+            <label for="languages">Diller</label>
+            <input type="text" id="languages" required>
+
+            <label for="quizTemplate">Başvuranlar için gönderilecek quizler</label>
+            <select id="quizTemplate" required>
+                <option value="">Seç</option>
+                <option value="template1">Quiz 1</option>
+                <option value="template2">Quiz 2</option>
+                <option value="template3">Quiz 3</option>
+            </select>
+
+            <button type="submit">Şimdi Yayınla</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('jobForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var jobTitle = document.getElementById('jobTitle').value;
+            var location = document.getElementById('location').value;
+
+
+            if (!jobTitle || !location) {
+
+                alert('Please fill in all the fields.');
+                return;
+            }
+
+
+            alert('Form submitted successfully!');
+        });</script>
+</body>
+</html>
+
+

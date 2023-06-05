@@ -2,9 +2,14 @@
 
 namespace DevIsFinalProject.Controllers
 {
-    public class ApplyJobController : Controller
+    public class AdminController : Controller
     {
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult PostJob()
         {
             return View();
         }

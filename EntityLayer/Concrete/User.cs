@@ -13,6 +13,7 @@ namespace EntityLayer.Concrete
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Phone { get; set; }
@@ -21,6 +22,9 @@ namespace EntityLayer.Concrete
         public string Region { get; set; }
         public string PostalCode { get; set; }
         public string Country { get; set; }
+        public string Phd { get; set; }
+        public string Experience { get; set; }
+        public string Resume { get; set; }
         public int RoleId { get; set; }
         public string ProfilePicture { get; set; }
         public int UserStatus { get; set; }

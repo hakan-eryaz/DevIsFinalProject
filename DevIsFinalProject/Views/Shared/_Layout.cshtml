@@ -33,7 +33,7 @@
                         <div class="col-lg-3 col-md-2">
                             <!-- Logo -->
                             <div class="logo">
-                                <a href="index.html"><img src="~/template2/assets/img/logo/logo2.png" style="height:100px; padding-top:10px" alt=""></a>
+                                <a href="../Home/Index"><img src="~/template2/assets/img/logo/logo2.png" style="height:100px; padding-top:10px" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-9">
@@ -42,15 +42,17 @@
                                 <div class="main-menu">
                                     <nav class="d-none d-lg-block">
                                         <ul id="navigation">
-                                            <li><a href="index.html">Ana Sayfa</a></li>
-                                            <li><a href="job_listing.html">İş İlanları </a></li>
-                                            <li><a href="about.html">Şirketler İçin</a></li>
-                                            <li><a href="contact.html">İletişim</a></li>
+                                            <li><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+                                            <li><a asp-controller="Job" asp-action="JobList">İş İlanları </a></li>
+                                            <li><a asp-controller="Admin" asp-action="Index">Şirketler İçin</a></li>
+                                            <li><a asp-controller="Home" asp-action="Contact">İletişim</a></li>
                                             <li>
                                                 <a href="#">Diğer</a>
                                                 <ul class="submenu">
                                                     <li><a href="blog.html">Hakkımızda</a></li>
                                                     <li><a href="single-blog.html">Blog</a></li>
+                                                    <li><a asp-controller="User" asp-action="Index">Profilim</a></li>
+
                                                 </ul>
                                             </li>
                                             
@@ -59,8 +61,8 @@
                                 </div>
                                 <!-- Header-btn -->
                                 <div class="header-btn d-none f-right d-lg-block">
-                                    <a href="#" class="btn head-btn1">Üye Ol</a>
-                                    <a href="#" class="btn head-btn2">Giriş Yap</a>
+                                    <a asp-controller="Account" asp-action="Register"  class="btn head-btn1">Üye Ol</a>
+                                    <a asp-controller="Account" asp-action="Login"  class="btn head-btn2">Giriş Yap</a>
                                 </div>
                             </div>
                         </div>

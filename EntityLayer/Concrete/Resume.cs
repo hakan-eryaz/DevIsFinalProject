@@ -14,6 +14,15 @@ namespace EntityLayer.Concrete
         public int JobSeekerID { get; set; }
         public string ResumeTitle { get; set; }
         public byte[] ResumeFile { get; set; }
+        public string Position { get; set; }
+        public string Level { get; set; }
+        public string Experience { get; set; }
+        public string Technology { get; set; }
+        public string Salary { get; set; }
+
+        public string Way_of_working { get; set; }
+
+
         public JobSeeker JobSeeker { get; set; }
     }
 }
