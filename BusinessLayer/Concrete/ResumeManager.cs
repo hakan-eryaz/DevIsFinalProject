@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,12 @@ namespace BusinessLayer.Concrete
 {
     public class ResumeManager : IResumeService
     {
+        private IResumeDal _resumeDal;
+
+        public ResumeManager(IResumeDal resumeDal)
+        {
+            _resumeDal = resumeDal;
+        }
         public List<Resume> GetAll()
         {
             throw new NotImplementedException();
@@ -22,7 +29,7 @@ namespace BusinessLayer.Concrete
 
         public void TAdd(Resume entity)
         {
-            throw new NotImplementedException();
+            _resumeDal.Add(entity);
         }
 
         public void TRemove(Resume entity)

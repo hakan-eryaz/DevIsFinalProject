@@ -18,6 +18,7 @@ namespace DevIsFinalProject.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult Register( JobSeeker jobSeeker)
         {

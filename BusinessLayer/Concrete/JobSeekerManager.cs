@@ -11,7 +11,7 @@ namespace BusinessLayer.Concrete
 {
     public class JobSeekerManager : IJobSeekerService
     {
-        private IJobSeekerDal _jobSeekerDal;
+        IJobSeekerDal _jobSeekerDal;
 
         public JobSeekerManager(IJobSeekerDal jobSeekerDal)
         {
@@ -24,7 +24,7 @@ namespace BusinessLayer.Concrete
 
         public JobSeeker GetById(int id)
         {
-            throw new NotImplementedException();
+            return _jobSeekerDal.Get(id);
         }
 
         public void TAdd(JobSeeker entity)
