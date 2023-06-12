@@ -185,9 +185,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime>("ExpirationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("JobCategoryCategoryID")
-                        .HasColumnType("int");
-
                     b.Property<int>("JobStatus")
                         .HasColumnType("int");
 
@@ -211,9 +208,9 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("JobID");
 
-                    b.HasIndex("EmployerID");
+                    b.HasIndex("CategoryID");
 
-                    b.HasIndex("JobCategoryCategoryID");
+                    b.HasIndex("EmployerID");
 
                     b.ToTable("Jobs");
                 });
@@ -496,15 +493,15 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.Job", b =>
                 {
-                    b.HasOne("EntityLayer.Concrete.Employer", "Employer")
-                        .WithMany()
-                        .HasForeignKey("EmployerID")
+                    b.HasOne("EntityLayer.Concrete.JobCategory", "JobCategory")
+                        .WithMany("Jobs")
+                        .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EntityLayer.Concrete.JobCategory", "JobCategory")
+                    b.HasOne("EntityLayer.Concrete.Employer", "Employer")
                         .WithMany()
-                        .HasForeignKey("JobCategoryCategoryID")
+                        .HasForeignKey("EmployerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -541,6 +538,11 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("JobSeeker");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.JobCategory", b =>
+                {
+                    b.Navigation("Jobs");
                 });
 #pragma warning restore 612, 618
         }

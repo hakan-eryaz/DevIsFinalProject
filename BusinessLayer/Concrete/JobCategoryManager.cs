@@ -29,17 +29,17 @@ namespace BusinessLayer.Concrete
 
         public void TAdd(JobCategory entity)
         {
-            throw new NotImplementedException();
+            _jobCategoryDal.Add(entity);
         }
 
         public void TRemove(JobCategory entity)
         {
-            throw new NotImplementedException();
+            _jobCategoryDal.Remove(entity);
         }
 
         public void TUpdate(JobCategory entity)
         {
-            throw new NotImplementedException();
+            _jobCategoryDal.Update(entity);
         }
     }
 }

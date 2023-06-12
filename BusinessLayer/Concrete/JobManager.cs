@@ -19,16 +19,16 @@ namespace BusinessLayer.Concrete
         {
             _jobDal=jobDal;
         }
-
+        public List<Job> GetJobWithCategory()
+        {
+            return _jobDal.GetListWithCategory();
+        }
         public Job GetJobByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public List<Job> GetJobWithCategory()
-        {
-            return _jobDal.GetListWithCategory();
-        }
+ 
 
         public void TAdd(Job entity)
         {

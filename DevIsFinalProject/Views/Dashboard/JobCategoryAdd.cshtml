@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Quiz";
+    Layout = "~/Views/Shared/DashboardLayout.cshtml";
+}
+
+
+<!-- Card -->
+<div id="emailSection" class="card mb-3 mb-lg-5">
+    <div class="card-header">
+        <h3 class="card-title h4">Add Category</h3>
+    </div>
+
+    <!-- Body -->
+    <div class="card-body">
+
+        <!-- Form -->
+        <form method="post">
+            <!-- Form Group -->
+            <div class="row form-group">
+                <label for="newEmailLabel" class="col-sm-3 col-form-label input-label">New Category</label>
+
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="CategoryName" id="CategoryName" placeholder="Category Name" aria-label="Category Name">
+                </div>
+            </div>
+            <!-- End Form Group -->
+
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+        <!-- End Form -->
+    </div>
+    <!-- End Body -->
+</div>
+<!-- End Card -->

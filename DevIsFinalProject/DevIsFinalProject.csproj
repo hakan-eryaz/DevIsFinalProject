@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\dashboard1\dist\assets\vendor\quill\node_modules\clone\package.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\dashboard1\dist\assets\vendor\quill\node_modules\clone\clone.iml" />
+    <None Include="wwwroot\dashboard1\dist\assets\vendor\quill\node_modules\clone\clone.js" />
+    <None Include="wwwroot\dashboard1\dist\assets\vendor\quill\node_modules\clone\LICENSE" />
+    <None Include="wwwroot\dashboard1\dist\assets\vendor\quill\node_modules\clone\README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
       <PrivateAssets>all</PrivateAssets>
