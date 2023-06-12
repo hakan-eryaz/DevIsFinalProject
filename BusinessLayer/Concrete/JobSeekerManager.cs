@@ -19,7 +19,7 @@ namespace BusinessLayer.Concrete
         }
         public List<JobSeeker> GetAll()
         {
-            throw new NotImplementedException();
+           return _jobSeekerDal.GetAll();
         }
 
         public JobSeeker GetById(int id)
@@ -40,6 +40,11 @@ namespace BusinessLayer.Concrete
         public void TUpdate(JobSeeker entity)
         {
             _jobSeekerDal.Update(entity);
+        }
+
+        public JobSeeker GetListWithSkill(int skillId)
+        {
+            return _jobSeekerDal.GetListWithSkill(skillId);
         }
     }
 }

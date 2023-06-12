@@ -5,34 +5,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer.Abstract;
 
 namespace BusinessLayer.Concrete
 {
     public class SkillManager : ISkillService
     {
+        private ISkillDal _skillDal;
+
+        public SkillManager(ISkillDal skillDal)
+        {
+            _skillDal=skillDal;
+        }
         public List<Skill> GetAll()
         {
-            throw new NotImplementedException();
+            return _skillDal.GetAll();
         }
 
         public Skill GetById(int id)
         {
-            throw new NotImplementedException();
+            return _skillDal.Get(id);
         }
 
         public void TAdd(Skill entity)
         {
-            throw new NotImplementedException();
+            _skillDal.Add(entity);
         }
 
         public void TRemove(Skill entity)
         {
-            throw new NotImplementedException();
+            _skillDal.Remove(entity);
         }
 
         public void TUpdate(Skill entity)
         {
-            throw new NotImplementedException();
+            _skillDal.Update(entity);
         }
     }
 }

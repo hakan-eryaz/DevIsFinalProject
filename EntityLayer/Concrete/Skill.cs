@@ -12,5 +12,6 @@ namespace EntityLayer.Concrete
         [Key]
         public int SkillID { get; set; }
         public string SkillName { get; set; }
+        public ICollection<JobSeekerSkill> Skills { get; set; }
     }
 }

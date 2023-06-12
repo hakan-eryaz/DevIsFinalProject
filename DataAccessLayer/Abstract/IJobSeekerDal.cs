@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IJobSeekerDal:IGenericDal<JobSeeker>
     {
+        JobSeeker GetListWithSkill(int id);
     }
 }

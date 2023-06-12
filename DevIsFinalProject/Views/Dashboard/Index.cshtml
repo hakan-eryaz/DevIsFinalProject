@@ -326,10 +326,8 @@
 
                                 <td>@item.ExpirationDate</td>
                             <td>
-                                <a class="d-flex align-items-center" asp-controller="Dashboard" asp-action="JobDelete" asp-route-id="@item.JobID">
-                                    <div class="red mb-0" style="color: firebrick; border: initial; border">
-                                        <span class="avatar-initials warning">Delete</span>
-                                    </div>
+                                <a class="btn btn-sm btn-outline-danger" asp-controller="Dashboard" asp-action="JobDelete" asp-route-id="@item.JobID">
+                                    <i class="tio-delete-outlined"></i> Delete
                                 </a>
                                 </td>
                             </tr>
