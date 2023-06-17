@@ -21,10 +21,13 @@ namespace BusinessLayer.Concrete
         {
             throw new NotImplementedException();
         }
-
+        public List<ApplicationViewModel> GetApplications()
+        {
+            return _applicationDal.GetApplications();
+        }
         public Application GetById(int id)
         {
-            throw new NotImplementedException();
+            return _applicationDal.Get(id);
         }
 
         public void TAdd(Application entity)
@@ -39,7 +42,7 @@ namespace BusinessLayer.Concrete
 
         public void TUpdate(Application entity)
         {
-            throw new NotImplementedException();
+            _applicationDal.Update(entity);
         }
     }
 }

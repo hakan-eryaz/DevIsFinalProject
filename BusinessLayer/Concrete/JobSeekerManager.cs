@@ -46,5 +46,6 @@ namespace BusinessLayer.Concrete
         {
             return _jobSeekerDal.GetListWithSkill(skillId);
         }
+
     }
 }

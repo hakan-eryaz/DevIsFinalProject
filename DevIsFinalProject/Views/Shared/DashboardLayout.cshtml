@@ -40,7 +40,6 @@
                 </div>
             </div>
 
-            <input class="form-control rounded-0" type="search" placeholder="Search in front" aria-label="Search in front">
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -68,8 +67,8 @@
             <div class="navbar-brand-wrapper">
                 <!-- Logo -->
                 <a class="navbar-brand" href="~/dashboard1/dist/index.html" aria-label="Front">
-                    <img class="navbar-brand-logo" src="~/dashboard1/dist/assets/svg/logos/logo.svg" alt="Logo">
-                    <img class="navbar-brand-logo-mini" src="~/dashboard1/dist/assets/svg/logos/logo-short.svg" alt="Logo">
+                    <img class="navbar-brand-logo" src="~/template2/assets/img/logo/logo2.png" alt="Logo">
+                    <img class="navbar-brand-logo-mini" src="~/template2/assets/img/logo/logo2.png" alt="Logo">
                 </a>
                 <!-- End Logo -->
             </div>
@@ -91,14 +90,7 @@
                                     <i class="tio-search"></i>
                                 </div>
                             </div>
-                            <input type="search" class="js-form-search form-control" placeholder="Search in front" aria-label="Search in front"
-                                   data-hs-form-search-options='{
-                           "clearIcon": "#clearSearchResultsIcon",
-                           "dropMenuElement": "#searchDropdownMenu",
-                           "dropMenuOffset": 20,
-                           "toggleIconOnFocus": true,
-                           "activeClass": "focus"
-                         }'>
+                            
                             <a class="input-group-append" href="javascript:;">
                                 <span class="input-group-text">
                                     <i id="clearSearchResultsIcon" class="tio-clear" style="display: none;"></i>
@@ -879,24 +871,52 @@
                             <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
                              
 
-                            <li class="navbar-vertical-aside-has-menu show">
-                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"  title="Jobs">
+                                <li class="navbar-vertical-aside-has-menu show">
+                                    <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"  title="Jobs">
+                                        <span class="tio-circle nav-indicator-icon"></span>
+                                        <span class="text-truncate">Jobs</span>
+                                    </a>
+                                    <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-controller="Dashboard" asp-action="Index" title="List Jobs">
+                                                <span class="tio-circle nav-indicator-icon"></span>
+                                                <span class="text-truncate">List Jobs</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-controller="Dashboard" asp-action="JobPost" title="Add Job">
+                                                <span class="tio-circle nav-indicator-icon"></span>
+                                                <span class="text-truncate">Add Job</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-controller="Dashboard" asp-action="JobCategoryAdd" title="Add Job Category">
+                                                <span class="tio-circle nav-indicator-icon"></span>
+                                                <span class="text-truncate">Add Job Category</span>
+                                            </a>
+                                        </li>
+                                    
+                                    </ul>
+                                </li>
+                                <li class="navbar-vertical-aside-has-menu show">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"  title="Applications">
                                     <span class="tio-circle nav-indicator-icon"></span>
                                     <span class="text-truncate">Jobs</span>
                                 </a>
                                 <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
                                     <li class="nav-item">
-                                        <a class="nav-link " asp-controller="Dashboard" asp-action="Index" title="List Jobs">
+                                            <a class="nav-link " asp-controller="Dashboard" asp-action="JobApplicationsList" title="List Applications">
                                             <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">List Jobs</span>
+                                                <span class="text-truncate">List Applications</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " asp-controller="Dashboard" asp-action="JobCategoryAdd" title="Add Job Category">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span class="text-truncate">Add Job Category</span>
-                                        </a>
-                                    </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " asp-controller="Dashboard" asp-action="JobSeekerList" title="Job Seeker List">
+                                                <span class="tio-circle-outlined nav-indicator-icon"></span>
+                                                <span class="text-truncate">Job Seeker List</span>
+                                            </a>
+                                        </li>
+                                    
                                 </ul>
                             </li>
                             <li class="navbar-vertical-aside-has-menu show">
@@ -929,12 +949,7 @@
                                             <span class="text-truncate">İletişim Listem</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " asp-controller="Dashboard" asp-action="JobSeekerList" title="Job Seeker List">
-                                            <span class="tio-circle-outlined nav-indicator-icon"></span>
-                                            <span class="text-truncate">Job Seeker List</span>
-                                        </a>
-                                    </li>
+                                    
                                 </ul>
                             </li>
 

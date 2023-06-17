@@ -1,8 +1,10 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace DevIsFinalProject.Controllers
 {
@@ -14,6 +16,8 @@ namespace DevIsFinalProject.Controllers
         JobCategoryManager jobCategoryManager = new JobCategoryManager(new EFJobCategoryRepository());
         private ResumeManager resumeManager = new ResumeManager(new EfResumeRepository());
         private JobSeekerManager jobSeekerManager = new JobSeekerManager(new EfJobSeekerRepository());
+        private ApplicationManager applicationManager = new ApplicationManager(new EfApplicationRepository());
+
         public IActionResult Index()
         {
             var values = jobManager.GetJobWithCategory();
@@ -110,7 +114,6 @@ namespace DevIsFinalProject.Controllers
         public IActionResult JobSeekerList(JobSeeker jobSeeker)
         {
             jobSeekerManager.TAdd(jobSeeker);
-
             return RedirectToAction("JobPost", "Dashboard");
         }
 
@@ -126,6 +129,32 @@ namespace DevIsFinalProject.Controllers
             jobSeekerManager.TAdd(jobSeeker);
 
             return RedirectToAction("JobPost", "Dashboard");
+        }
+        
+        [HttpGet]
+        public IActionResult JobApplicationsList()
+        {
+            
+            var result = applicationManager.GetApplications();
+            return View(result);
+        }
+        [HttpGet]
+        [HttpPost]
+        public IActionResult AcceptJobSeeker(int id)
+        {
+            var value = applicationManager.GetById(id);
+            value.ApplicationStatus = 1;
+            applicationManager.TUpdate(value);
+            return RedirectToAction("JobApplicationsList", "Dashboard");
+        }
+        [HttpGet]
+        [HttpPost]
+        public IActionResult RejectJobSeeker(int id)
+        {
+            var value = applicationManager.GetById(id);
+            value.ApplicationStatus = -1;
+            applicationManager.TUpdate(value);
+            return RedirectToAction("JobApplicationsList", "Dashboard");
         }
     }
 }
