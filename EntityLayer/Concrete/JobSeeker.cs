@@ -21,6 +21,7 @@ namespace EntityLayer.Concrete
         public string State { get; set; }
         public string ZipCode { get; set; }
         public int JobSeekerStatus { get; set; }
+        public int IsAdmin { get; set; }
 
         public ICollection<JobSeekerSkill> Skills { get; set; }
         public ICollection<Resume> Resumes { get; set; }

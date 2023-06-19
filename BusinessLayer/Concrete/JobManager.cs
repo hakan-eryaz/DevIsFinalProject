@@ -8,6 +8,7 @@ using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
 using DataAccessLayer.Repositories;
 using EntityLayer.Concrete;
+using EntityLayer.Concrete.ViewModels;
 
 namespace BusinessLayer.Concrete
 {
@@ -23,12 +24,10 @@ namespace BusinessLayer.Concrete
         {
             return _jobDal.GetListWithCategory();
         }
-        public Job GetJobByName(string name)
+        public DetailedJobViewModel GetAllInfoAboutJob(int id)
         {
-            throw new NotImplementedException();
+            return _jobDal.GetAllInfoAboutJob(id);
         }
-
- 
 
         public void TAdd(Job entity)
         {
@@ -58,6 +57,11 @@ namespace BusinessLayer.Concrete
         public List<Job> GetJobByID(int id)
         {
             return _jobDal.List(x => x.JobID == id);
+        }
+
+        public Job GetJobByName(string name)
+        {
+            throw new NotImplementedException();
         }
     }
 }

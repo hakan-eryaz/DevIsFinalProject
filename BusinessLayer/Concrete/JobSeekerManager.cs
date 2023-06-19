@@ -26,6 +26,10 @@ namespace BusinessLayer.Concrete
         {
             return _jobSeekerDal.Get(id);
         }
+        public JobSeeker Login(string email, string password)
+        {
+            return _jobSeekerDal.Login(email, password);
+        }
 
         public void TAdd(JobSeeker entity)
         {
@@ -45,6 +49,11 @@ namespace BusinessLayer.Concrete
         public JobSeeker GetListWithSkill(int skillId)
         {
             return _jobSeekerDal.GetListWithSkill(skillId);
+        }
+
+        public JobSeeker GetByEmailAndPassword(string email, string password)
+        {
+            return _jobSeekerDal.Login(email, password);
         }
 
     }

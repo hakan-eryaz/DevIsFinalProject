@@ -12,18 +12,70 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230610115610_mig2")]
-    partial class mig2
+    [Migration("20230618165959_empmig3")]
+    partial class empmig3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.4")
+                .HasAnnotation("ProductVersion", "7.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("EntityLayer.Concrete.Address", b =>
+                {
+                    b.Property<int>("AddressID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AddressID"));
+
+                    b.Property<string>("ApartmentNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EmployeeID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EmployeeID1")
+                        .HasColumnType("int");
+
+                    b.Property<string>("HouseNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsChecked")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsEdited")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PostCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Street")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AddressID");
+
+                    b.HasIndex("EmployeeID")
+                        .IsUnique();
+
+                    b.HasIndex("EmployeeID1")
+                        .IsUnique()
+                        .HasFilter("[EmployeeID1] IS NOT NULL");
+
+                    b.ToTable("Addresses");
+                });
 
             modelBuilder.Entity("EntityLayer.Concrete.Application", b =>
                 {
@@ -35,6 +87,9 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<DateTime>("ApplicationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("ApplicationStatus")
+                        .HasColumnType("int");
 
                     b.Property<int>("JobID")
                         .HasColumnType("int");
@@ -78,6 +133,118 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("ContactId");
 
                     b.ToTable("Contacts");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Department", b =>
+                {
+                    b.Property<int>("DepartmentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DepartmentID"));
+
+                    b.Property<string>("DepartmentDesc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DepartmentEstablishmentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DepartmentManagerID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DepartmentName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsChecked")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsEdited")
+                        .HasColumnType("bit");
+
+                    b.HasKey("DepartmentID");
+
+                    b.HasIndex("DepartmentManagerID")
+                        .IsUnique()
+                        .HasFilter("[DepartmentManagerID] IS NOT NULL");
+
+                    b.ToTable("Departments");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Employee", b =>
+                {
+                    b.Property<int>("EmployeeID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeID"));
+
+                    b.Property<int?>("DepartmentID")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("EmployeeCurrentPassword")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EmployeeDateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EmployeeEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeNameSurname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeePassword")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeePhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeRole")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeSurname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeUserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsChecked")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDepartmentManager")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsEdited")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsProjectManager")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ProjectID")
+                        .HasColumnType("int");
+
+                    b.HasKey("EmployeeID");
+
+                    b.HasIndex("DepartmentID");
+
+                    b.HasIndex("ProjectID");
+
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Employer", b =>
@@ -188,9 +355,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime>("ExpirationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("JobCategoryCategoryID")
-                        .HasColumnType("int");
-
                     b.Property<int>("JobStatus")
                         .HasColumnType("int");
 
@@ -214,9 +378,9 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("JobID");
 
-                    b.HasIndex("EmployerID");
+                    b.HasIndex("CategoryID");
 
-                    b.HasIndex("JobCategoryCategoryID");
+                    b.HasIndex("EmployerID");
 
                     b.ToTable("Jobs");
                 });
@@ -311,6 +475,91 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("SkillID");
 
                     b.ToTable("JobSeekerSkills");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Project", b =>
+                {
+                    b.Property<int>("ProjectID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProjectID"));
+
+                    b.Property<bool>("IsChecked")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsEdited")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ProjectBrief")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ProjectDeadline")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ProjectDesc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProjectManagerID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProjectName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProjectID");
+
+                    b.HasIndex("ProjectManagerID")
+                        .IsUnique()
+                        .HasFilter("[ProjectManagerID] IS NOT NULL");
+
+                    b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.ProjectTask", b =>
+                {
+                    b.Property<int>("TaskID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskID"));
+
+                    b.Property<int?>("EmployeeID")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsChecked")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsEdited")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsEnd")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ProjectID")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TaskCreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("TaskDeadline")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TaskName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TaskID");
+
+                    b.HasIndex("EmployeeID");
+
+                    b.HasIndex("ProjectID");
+
+                    b.ToTable("ProjectTasks");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Resume", b =>
@@ -459,6 +708,21 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Address", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Employee", "Employee")
+                        .WithOne("EmployeeAddress")
+                        .HasForeignKey("EntityLayer.Concrete.Address", "EmployeeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.Employee", null)
+                        .WithOne("Address")
+                        .HasForeignKey("EntityLayer.Concrete.Address", "EmployeeID1");
+
+                    b.Navigation("Employee");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Application", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.Job", "Job")
@@ -476,6 +740,33 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Job");
 
                     b.Navigation("JobSeeker");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Department", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Employee", "DepartmentManager")
+                        .WithOne("DepartmentManager")
+                        .HasForeignKey("EntityLayer.Concrete.Department", "DepartmentManagerID");
+
+                    b.Navigation("DepartmentManager");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Employee", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Department", "Department")
+                        .WithMany("Employees")
+                        .HasForeignKey("DepartmentID")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.Project", "Project")
+                        .WithMany("Employees")
+                        .HasForeignKey("ProjectID")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.EmployerSkill", b =>
@@ -499,15 +790,15 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.Job", b =>
                 {
-                    b.HasOne("EntityLayer.Concrete.Employer", "Employer")
-                        .WithMany()
-                        .HasForeignKey("EmployerID")
+                    b.HasOne("EntityLayer.Concrete.JobCategory", "JobCategory")
+                        .WithMany("Jobs")
+                        .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EntityLayer.Concrete.JobCategory", "JobCategory")
-                        .WithMany("Jobs")
-                        .HasForeignKey("JobCategoryCategoryID")
+                    b.HasOne("EntityLayer.Concrete.Employer", "Employer")
+                        .WithMany()
+                        .HasForeignKey("EmployerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -519,13 +810,13 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("EntityLayer.Concrete.JobSeekerSkill", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.JobSeeker", "JobSeeker")
-                        .WithMany()
+                        .WithMany("Skills")
                         .HasForeignKey("JobSeekerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EntityLayer.Concrete.Skill", "Skill")
-                        .WithMany()
+                        .WithMany("Skills")
                         .HasForeignKey("SkillID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -535,10 +826,38 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Skill");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Project", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Employee", "ProjectManager")
+                        .WithOne("ProjectManager")
+                        .HasForeignKey("EntityLayer.Concrete.Project", "ProjectManagerID");
+
+                    b.Navigation("ProjectManager");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.ProjectTask", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.Employee", "Employee")
+                        .WithMany("ProjectTasks")
+                        .HasForeignKey("EmployeeID")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.Project", "Project")
+                        .WithMany("ProjectTasks")
+                        .HasForeignKey("ProjectID")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Project");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Resume", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.JobSeeker", "JobSeeker")
-                        .WithMany()
+                        .WithMany("Resumes")
                         .HasForeignKey("JobSeekerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -546,9 +865,50 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("JobSeeker");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Department", b =>
+                {
+                    b.Navigation("Employees");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Employee", b =>
+                {
+                    b.Navigation("Address")
+                        .IsRequired();
+
+                    b.Navigation("DepartmentManager")
+                        .IsRequired();
+
+                    b.Navigation("EmployeeAddress")
+                        .IsRequired();
+
+                    b.Navigation("ProjectManager")
+                        .IsRequired();
+
+                    b.Navigation("ProjectTasks");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.JobCategory", b =>
                 {
                     b.Navigation("Jobs");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.JobSeeker", b =>
+                {
+                    b.Navigation("Resumes");
+
+                    b.Navigation("Skills");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Project", b =>
+                {
+                    b.Navigation("Employees");
+
+                    b.Navigation("ProjectTasks");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Skill", b =>
+                {
+                    b.Navigation("Skills");
                 });
 #pragma warning restore 612, 618
         }

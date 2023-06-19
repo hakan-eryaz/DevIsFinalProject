@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -43,13 +45,18 @@
                                     <nav class="d-none d-lg-block">
                                         <ul id="navigation">
                                             <li><a href="../Home/Index">Ana Sayfa</a></li>
-                                            <li>
-                                                <a href="#">İlan İşlemleri</a>
-                                                <ul class="submenu">
-                                                    <li><a asp-controller="Dashboard" asp-action="Index">Dashboard'a Git</a></li>
-                                                    <li><a href="../Job/Index">İlanlarımı listele</a></li>
-                                                </ul>
+                                            @{
+                                                var id = Context.Session.GetString("User");
+
+                                            }
+                                            @if (id != null)
+                                            {
+                                                <li>
+
+                                                    <a asp-controller="Dashboard" asp-action="Index">Dashboard'a Git</a>
+                                                   
                                             </li>
+                                            }
                                             <li>
                                                 <a href="#">Özellikler</a>
                                                 <ul class="submenu">
@@ -64,15 +71,23 @@
                                                     <li><a href="single-blog.html">Aday Personel</a></li>
                                                 </ul>
                                             </li>
-
                                         </ul>
                                     </nav>
                                 </div>
                                 <!-- Header-btn -->
-                                <div class="header-btn d-none f-right d-lg-block">
-                                    <a href="../Register/Index" class="btn head-btn1">Profilim</a>
-                                    <a href="../Login/Index" class="btn head-btn2">Çıkış Yap</a>
-                                </div>
+                                
+                                @if (id != null)
+                                {
+                                    <a asp-controller="User" asp-action="Index" class="btn head-btn1">Profilim</a>
+                                    <a asp-controller="Account" asp-action="Logout" class="btn head-btn2">Çıkış Yap</a>
+
+                                }
+                                else
+                                {
+                                    <a asp-controller="Account" asp-action="Register" class="btn head-btn1">Üye Ol</a>
+
+                                    <a asp-controller="Account" asp-action="Login" class="btn head-btn2">Giriş Yap</a>
+                                }
                             </div>
                         </div>
                         <!-- Mobile Menu -->

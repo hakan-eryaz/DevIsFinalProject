@@ -1,0 +1,453 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model EntityLayer.Concrete.ViewModels.ApplicationViewModel
+@{
+    ViewData["Title"] = "JobSeekerAndJobCompare";
+    Layout = "~/Views/Shared/DashboardLayout.cshtml";
+}
+
+
+
+<main id="content" role="main" class="main">
+    <!-- Content -->
+    <div class="content container-fluid">
+        <div class="row justify-content-lg-center">
+            <div class="col-lg-10">
+                <!-- Profile Cover -->
+                <div class="profile-cover">
+                    <div class="profile-cover-img-wrapper">
+                        <img class="profile-cover-img" src="~/dashboard1/dist/assets/img/1920x400/img1.jpg" alt="Image Description">
+                    </div>
+                </div>
+                <!-- End Profile Cover -->
+                <!-- Profile Header -->
+                <div class="text-center mb-5">
+                    <!-- Avatar -->
+                    
+                    <!-- End Avatar -->
+
+
+                    <h1 class="page-header-title">@Model.ApplicantName <i class="tio-verified tio-lg text-primary" data-toggle="tooltip" data-placement="top" title="Top endorsed"></i></h1>
+
+                    <!-- List -->
+                    <ul class="list-inline list-inline-m-1">
+                        <li class="list-inline-item">
+                            <i class="tio-city mr-1"></i>
+                            <span>@Model.ApplicantMail</span>
+                        </li>
+
+                        <li class="list-inline-item">
+                            <i class="tio-poi-outlined mr-1"></i>
+                            @Model.ApplicantCity
+                        </li>
+
+
+                    </ul>
+
+
+                    <!-- End List -->
+                </div>
+                <!-- End Profile Header -->
+                <!-- Nav -->
+                <div class="js-nav-scroller hs-nav-scroller-horizontal mb-5">
+                    <span class="hs-nav-scroller-arrow-prev" style="display: none;">
+                        <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+                            <i class="tio-chevron-left"></i>
+                        </a>
+                    </span>
+
+                    <span class="hs-nav-scroller-arrow-next" style="display: none;">
+                        <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+                            <i class="tio-chevron-right"></i>
+                        </a>
+                    </span>
+
+                    <ul class="nav nav-tabs align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="user-profile.html">Profile</a>
+                        </li>
+
+
+
+                        <li class="nav-item ml-auto">
+                            <a class="btn btn-sm btn-outline-success" asp-controller="Dashboard" asp-action="AcceptJobSeeker" asp-route-id="@Model.ApplicationID">
+                                <i class="tio-checkmark-circle"></i> Accept
+                            </a>
+
+                            <a class="btn btn-sm btn-outline-danger" asp-controller="Dashboard" asp-action="RejectJobSeeker" asp-route-id="@Model.ApplicationID">
+                                <i class="tio-delete-outlined"></i> Reject
+                            </a>
+
+                            <a class="btn btn-icon btn-sm btn-white mr-2" href="#">
+                                <i class="tio-format-points mr-1"></i>
+                            </a>
+
+                            <!-- Unfold -->
+                            <div class="hs-unfold hs-nav-scroller-unfold">
+                                <a class="js-hs-unfold-invoker btn btn-icon btn-sm btn-white" href="javascript:;"
+                                   data-hs-unfold-options='{
+                         "target": "#profileDropdown",
+                         "type": "css-animation"
+                       }'>
+                                    <i class="tio-more-vertical"></i>
+                                </a>
+
+                                <div id="profileDropdown" class="hs-unfold-content dropdown-unfold dropdown-menu dropdown-menu-right mt-1">
+                                    <span class="dropdown-header">Settings</span>
+
+                                    <a class="dropdown-item" href="#">
+                                        <i class="tio-share dropdown-item-icon"></i> Share profile
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="tio-blocked dropdown-item-icon"></i> Block page and profile
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="tio-info-outined dropdown-item-icon"></i> Suggest edits
+                                    </a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <span class="dropdown-header">Feedback</span>
+
+                                    <a class="dropdown-item" href="#">
+                                        <i class="tio-report-outlined dropdown-item-icon"></i> Report
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- End Unfold -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Nav -->
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <!-- Card -->
+                        <!-- Header -->
+                        <div class="card-header">
+                            <h5 class="card-header-title">Profile Summary</h5>
+                        </div>
+                        <!-- End Header -->
+                        <!-- Body -->
+                        <div class="card-body">
+                            <ul class="list-unstyled list-unstyled-py-3 text-dark mb-3">
+                                <li class="py-0">
+                                    <small class="card-subtitle">About</small>
+                                </li>
+
+                                <li>
+                                    <i class="tio-user-outlined nav-icon"></i>
+                                    @Model.ApplicantName
+                                </li>
+                                
+                                <li>
+                                    <i class="tio-user-outlined nav-icon"></i>
+                                    @Model.ApplicantCity
+                                </li>
+                                <li>
+                                    <i class="tio-user-outlined nav-icon"></i>
+                                    @Model.ApplicantAddress
+                                </li>
+                                <li class="py-0">
+                                    <small class="card-subtitle">Skills</small>
+                                </li>
+                                <li>
+                                    @foreach (var personSkill in Model.SkillNames)
+                                    {
+
+                                        <i class="tio-briefcase-outlined nav-icon"></i>
+
+                                        @personSkill
+                                    }
+
+                                </li>
+
+
+                                <li class="pt-2 pb-0">
+                                    <small class="card-subtitle">Contacts</small>
+                                </li>
+
+                                <li>
+                                    <i class="tio-user-outlined nav-icon"></i>
+                                    @Model.ApplicantMail
+                                </li>
+                                <li>
+                                    <i class="tio-user-outlined nav-icon"></i>
+                                    @Model.ApplicantContactNumber
+                                </li>
+                                <li class="pt-2 pb-0">
+                                    <small class="card-subtitle">Job Offer Status</small>
+                                </li>
+                                @if (Model.ApplicationStatus == 0)
+                                {
+                                    <li>
+                                        Not Evaluated
+                                    </li>
+                                }
+                                else if (@Model.ApplicationStatus == -1)
+                                {
+                                    <li style="color: red; font-weight: bold;">
+                                        Rejected
+                                    </li>
+                                }
+                                else if (@Model.ApplicationStatus == 1)
+                                {
+                                    <li style="color: green; font-weight: bold;">
+                                        Accepted
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <!-- End Body -->
+                    </div>
+                    <div class="col-lg-4">
+                        <!-- Card -->
+                        <!-- Header -->
+                        <div class="card-header">
+                            <h5 class="card-header-title">Job Summary</h5>
+                        </div>
+                        <!-- End Header -->
+                        <!-- Body -->
+                        <div class="card-body">
+                            <ul class="list-unstyled list-unstyled-py-3 text-dark mb-3">
+                                <li class="py-0">
+                                    <small class="card-subtitle">Company Name</small>
+                                </li>
+                                <li>
+                                    <i class="tio-user-outlined nav-icon"></i>
+                                    @Model.Employer.CompanyName
+                                </li>
+                                <li class="py-0">
+                                    <small class="card-subtitle">Job Name</small>
+                                </li>
+                                <li>
+                                    <i class="tio-user-outlined nav-icon"></i>
+                                    @Model.JobName
+                                </li>
+                                <li class="py-0">
+                                    <small class="card-subtitle">Job Category</small>
+                                </li>
+                                <li>
+                                    <i class="tio-user-outlined nav-icon"></i>
+                                    @Model.JobCategory
+                                </li>
+                                <li class="py-0">
+                                    <small class="card-subtitle">Job Location</small>
+                                </li>
+                                <li>
+                                    <i class="tio-user-outlined nav-icon"></i>
+                                    @Model.JobLocation
+                                </li>
+                                <li class="py-0">
+                                    <small class="card-subtitle">Job Salary</small>
+                                </li>
+                                <li>
+                                    <i class="tio-user-outlined nav-icon"></i>
+                                    @Model.JobSalary
+                                </li>
+                                <li class="py-0">
+                                    <small class="card-subtitle">Job Description</small>
+                                </li>
+                                <li>
+                                <i class="tio-user-outlined nav-icon"></i>
+                                @Model.Description
+                                </li>
+                                <li class="py-0">
+                                    <small class="card-subtitle">Skills</small>
+                                </li>
+                                <i class="tio-user-outlined nav-icon"></i>
+                                @Model.Requirement
+                                </li>
+
+
+                                <li class="pt-2 pb-0">
+                                    <small class="card-subtitle">Contacts</small>
+                                </li>
+
+                                <li>
+                                    <i class="tio-online nav-icon"></i>
+                                    @Model.Employer.ContactPhone
+                                </li>
+                                <li>
+                                    <i class="tio-android-phone-vs nav-icon"></i>
+                                    @Model.Employer.CompanyEmail
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <!-- End Body -->
+                    </div>
+                    <!-- End Card -->
+                </div>
+
+
+
+                <div class="row">
+
+                    @foreach (var personSkill in Model.Resumes)
+                    {
+
+                        <div class="col-sm-6 mb-3 mb-lg-5">
+                            <!-- Card -->
+                            <div class="card h-100">
+                                <!-- Header -->
+                                <div class="card-header">
+                                    <h5 class="card-header-title">@personSkill.ResumeTitle</h5>
+                                </div>
+                                <!-- End Header -->
+                                <!-- Body -->
+                                <div class="card-body">
+                                    <ul class="list-unstyled list-unstyled-py-4 mb-0">
+                                        <!-- List Item -->
+                                        <li>
+                                            <div class="d-flex align-items-center">
+                                                <a class="d-flex align-items-center mr-2" href="#">
+
+                                                    <div class="ml-3">
+                                                        <h5 class="text-hover-primary mb-0">Experience:  </h5>
+
+                                                    </div>
+
+                                                    <div class="ml-3">
+                                                        <h5 class="text-hover-primary mb-0">@personSkill.Experience</h5>
+
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex align-items-center">
+                                                <a class="d-flex align-items-center mr-2" href="#">
+
+                                                    <div class="ml-3">
+                                                        <h5 class="text-hover-primary mb-0">Level:  </h5>
+
+                                                    </div>
+
+                                                    <div class="ml-3">
+                                                        <h5 class="text-hover-primary mb-0">@personSkill.Level</h5>
+
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex align-items-center">
+                                                <a class="d-flex align-items-center mr-2" href="#">
+
+                                                    <div class="ml-3">
+                                                        <h5 class="text-hover-primary mb-0">Position:  </h5>
+
+                                                    </div>
+
+                                                    <div class="ml-3">
+                                                        <h5 class="text-hover-primary mb-0">@personSkill.Position</h5>
+
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex align-items-center">
+                                                <a class="d-flex align-items-center mr-2" href="#">
+
+                                                    <div class="ml-3">
+                                                        <h5 class="text-hover-primary mb-0">Expected Salary:  </h5>
+
+                                                    </div>
+
+                                                    <div class="ml-3">
+                                                        <h5 class="text-hover-primary mb-0">@personSkill.Salary</h5>
+
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex align-items-center">
+                                                <a class="d-flex align-items-center mr-2" href="#">
+
+                                                    <div class="ml-3">
+                                                        <h5 class="text-hover-primary mb-0">Technology:  </h5>
+
+                                                    </div>
+
+                                                    <div class="ml-3">
+                                                        <h5 class="text-hover-primary mb-0">@personSkill.Technology</h5>
+
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex align-items-center">
+                                                <a class="d-flex align-items-center mr-2" href="#">
+
+                                                    <div class="ml-3">
+                                                        <h5 class="text-hover-primary mb-0">Preffered Ways Of Working:  </h5>
+
+                                                    </div>
+
+                                                    <div class="ml-3">
+                                                        <h5 class="text-hover-primary mb-0">@personSkill.Way_of_working</h5>
+
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <!-- End List Item -->
+                                        <!-- List Item -->
+                                        <!-- End List Item -->
+                                        <!-- List Item -->
+                                        <!-- End List Item -->
+                                        <!-- List Item -->
+                                        <!-- End List Item -->
+                                    </ul>
+                                </div>
+                                <!-- End Body -->
+                                <!-- Footer -->
+                                <!-- End Footer -->
+                            </div>
+                            <!-- End Card -->
+                        </div>
+
+                    }
+
+
+                    <div class="col-sm-6 mb-3 mb-lg-5">
+                        <!-- Card -->
+                        <div class="card h-100">
+                            <!-- Header -->
+                            <div class="card-header">
+                                <h5 class="card-header-title">Skills</h5>
+                            </div>
+                            <!-- End Header -->
+                            <!-- Body -->
+                            <div class="card-body">
+                                <ul class="nav card-nav card-nav-vertical nav-pills">
+                                    <!-- List Item -->
+                                    @foreach (var personSkill in Model.SkillNames)
+                                    {
+                                        <li>
+                                            <a class="nav-link media" href="#">
+                                                <i class="tio-group-senior nav-icon text-dark"></i>
+                                                <span class="media-body">
+                                                    <span class="d-block text-dark">@personSkill</span>
+
+                                                </span>
+                                            </a>
+                                        </li>
+                                    }
+
+
+                                </ul>
+                            </div>
+
+                            <!-- End Footer -->
+                        </div>
+                        <!-- End Card -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

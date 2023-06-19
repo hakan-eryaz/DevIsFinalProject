@@ -46,23 +46,31 @@
                                             <li><a asp-controller="Job" asp-action="JobList">İş İlanları </a></li>
                                             <li><a asp-controller="Admin" asp-action="Index">Şirketler İçin</a></li>
                                             <li><a asp-controller="Home" asp-action="Contact">İletişim</a></li>
-                                            <li>
-                                                <a href="#">Diğer</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Hakkımızda</a></li>
-                                                    <li><a href="single-blog.html">Blog</a></li>
-                                                    <li><a asp-controller="User" asp-action="Index">Profilim</a></li>
-
-                                                </ul>
-                                            </li>
+                                            
                                             
                                         </ul>
                                     </nav>
                                 </div>
                                 <!-- Header-btn -->
                                 <div class="header-btn d-none f-right d-lg-block">
-                                    <a asp-controller="Account" asp-action="Register"  class="btn head-btn1">Üye Ol</a>
-                                    <a asp-controller="Account" asp-action="Login"  class="btn head-btn2">Giriş Yap</a>
+                                    @{
+                                        var id = Context.Session.GetString("User");
+
+                                    }
+                                    @if (id != null)
+                                    {
+                                        <a asp-controller="User" asp-action="Index" class="btn head-btn1">Profilim</a>
+                                        <a asp-controller="Account" asp-action="Logout" class="btn head-btn2">Çıkış Yap</a>
+
+                                    }
+                                    else
+                                    {
+                                        <a asp-controller="Account" asp-action="Register" class="btn head-btn1">Üye Ol</a>
+
+                                        <a asp-controller="Account" asp-action="Login" class="btn head-btn2">Giriş Yap</a>
+                                    }
+
+
                                 </div>
                             </div>
                         </div>

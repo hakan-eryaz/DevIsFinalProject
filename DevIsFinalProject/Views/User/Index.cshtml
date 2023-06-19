@@ -104,37 +104,27 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <a class=" btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
-
+            
             <div class="row gutters-sm">
                 <div class="col-sm-12 mb-12" style="margin: 15px 0px; ;">
                     <div class="card h-100">
                         <div class="card-body">
                             <h6 class="d-flex align-items-center mb-3"><i class="material-icons  mr-2">Work Experience </h6>
-                            <p class="work-title"><b>Company Name </p>
-                            <p>3 years</p>
-                            <ul class="work-list">
-                                <li>-------------</li>
-                                <li>-------------</li>
-                                <li>-------------</li>
-                            </ul>
-                            <p class="work-title"><b>Company Name </p>
-                            <p>3 years</p>
-                            <ul class="work-list">
-                                <li>-------------</li>
-                                <li>-------------</li>
-                                <li>-------------</li>
-                            </ul>
-
-                            <div class="col-sm-12">
-                                <a class=" btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
-                            </div>
+                                @foreach (var item in Model.Resumes)
+                            {
+                                <p class="work-title"><b>@item.ResumeTitle </p>
+                                <p>Experience : @item.Experience</p>
+                                <ul class="work-list">
+                                    <li>Technologies : @item.Technology</li>
+                                    <li>Salary : @item.Salary</li>
+                                    <li>Level : @item.Level</li>
+                                    <li>Position : @item.Position</li>
+                                </ul>
+                            }
+                            
                         </div>
                     </div>
                 </div>
@@ -144,26 +134,15 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <h6 class="d-flex align-items-center mb-3"><i class="material-icons mr-2">Skills</h6>
-                            <small>Web Design</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>Website Markup</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>One Page</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>Mobile Template</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small>Backend API</small>
-                            <div class="progress mb-3" style="height: 5px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                            @foreach (var item in Model.Skills)
+                            {
+                                <small>@item.Skill.SkillName</small>
+                                <div class="progress mb-3" style="height: 5px">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            }
+                            
+                            
                         </div>
                     </div>
                 </div>

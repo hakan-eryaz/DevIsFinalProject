@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevIsFinalProject.Controllers
@@ -10,7 +11,9 @@ namespace DevIsFinalProject.Controllers
 
         public IActionResult Index()
         {
-            var result = jobSeekerManager.GetById(1);
+            var id =(int)HttpContext.Session.GetInt32("User");
+
+            var result = jobSeekerManager.GetListWithSkill(id);
             return View(result);
         }
     }

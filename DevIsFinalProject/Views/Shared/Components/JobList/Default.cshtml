@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="items-link f-right">
-            <a href="job_details.html">@item.CategoryID</a>
+            <a asp-controller="Job" asp-action="JobDetails" asp-route-id="@item.JobID">Başvur</a>
             <span>@((DateTime.Now - item.PostedDate).Days) days @((DateTime.Now - item.PostedDate).Hours) hours ago</span>
                     </div>
                 </div>

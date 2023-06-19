@@ -26,5 +26,12 @@ namespace DataAccessLayer.EntityFramework
                 return person;
             }
         }
+
+        public JobSeeker Login(string email, string password)
+        {
+            using var context = new Context();
+            return context.Set<JobSeeker>().FirstOrDefault(e => e.Email == email && e.Password == password);
+        }
     }
-}
+    }
+

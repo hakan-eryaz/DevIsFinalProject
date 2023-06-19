@@ -2,6 +2,7 @@
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -48,7 +49,7 @@ namespace DevIsFinalProject.Controllers
         {
             job.PostedDate= DateTime.Now;
             job.ExpirationDate= job.PostedDate.AddDays(30);
-            job.EmployerID = 1;
+            job.EmployerID = (int)HttpContext.Session.GetInt32("User");
             job.JobStatus = 1;
             jobManager.TAdd(job);
             return RedirectToAction("Index", "Dashboard");
@@ -139,7 +140,7 @@ namespace DevIsFinalProject.Controllers
             return View(result);
         }
         [HttpGet]
-        [HttpPost]
+        [HttpPost] 
         public IActionResult AcceptJobSeeker(int id)
         {
             var value = applicationManager.GetById(id);
@@ -156,5 +157,13 @@ namespace DevIsFinalProject.Controllers
             applicationManager.TUpdate(value);
             return RedirectToAction("JobApplicationsList", "Dashboard");
         }
+
+        [HttpGet]
+        public IActionResult JobSeekerAndJobCompare(int id)
+        {
+            var result = applicationManager.GetApplicationsByID(id);
+            return View(result);
+        }
+        
     }
 }

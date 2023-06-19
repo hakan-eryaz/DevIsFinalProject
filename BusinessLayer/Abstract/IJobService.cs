@@ -13,5 +13,6 @@ namespace BusinessLayer.Abstract
         List<Job> GetJobWithCategory();
         List<Job> GetJobByID(int id);
 
+
     }
 }

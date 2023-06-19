@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
-@model List<EntityLayer.Concrete.ApplicationViewModel>
+@model List<EntityLayer.Concrete.ViewModels.ApplicationViewModel>
 
 @{
     ViewData["Title"] = "JobApplicationsList";
@@ -279,7 +279,7 @@
                                 </div>
                             </td>
                             <td class="table-column-pl-0">
-                                <a class="d-flex align-items-center" asp-controller="Dashboard" asp-action="JobUpdate" asp-route-id="@item.JobID">
+                                <a class="d-flex align-items-center" asp-controller="Dashboard" asp-action="JobSeekerAndJobCompare" asp-route-id="@item.ApplicationID">
                                     <div class="avatar avatar-soft-info avatar-circle">
                                         <span class="avatar-initials">@item.JobName[0]@item.JobName[1]</span>
                                     </div>

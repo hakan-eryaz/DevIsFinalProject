@@ -10,5 +10,6 @@ namespace DataAccessLayer.Abstract
     public interface IJobSeekerDal:IGenericDal<JobSeeker>
     {
         JobSeeker GetListWithSkill(int id);
+        JobSeeker Login(string email, string password);
     }
 }
